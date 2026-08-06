@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from database import get_db_connection, init_db
 
 app = Flask(__name__)
@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    # DB에서 모든 의견을 최신순으로 가져와 메인 화면에 표시
     conn = get_db_connection()
     opinions = conn.execute(
         "SELECT * FROM opinions ORDER BY created_at DESC"
@@ -37,13 +36,27 @@ def write():
 
 @app.route("/opinion/<int:opinion_id>")
 def detail(opinion_id):
-    # URL의 opinion_id로 해당 의견 하나만 조회
     conn = get_db_connection()
     opinion = conn.execute(
         "SELECT * FROM opinions WHERE id = ?", (opinion_id,)
     ).fetchone()
     conn.close()
     return render_template("detail.html", opinion=opinion)
+
+
+@app.route("/like/<int:opinion_id>", methods=["POST"])
+def like(opinion_id):
+    # 공감 수를 1 증가시키고, 변경된 숫자를 JSON으로 응답
+    conn = get_db_connection()
+    conn.execute(
+        "UPDATE opinions SET likes = likes + 1 WHERE id = ?", (opinion_id,)
+    )
+    conn.commit()
+    updated = conn.execute(
+        "SELECT likes FROM opinions WHERE id = ?", (opinion_id,)
+    ).fetchone()
+    conn.close()
+    return jsonify({"likes": updated["likes"]})
 
 
 if __name__ == "__main__":
