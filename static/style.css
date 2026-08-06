@@ -125,3 +125,17 @@ body {
 .detail-card .likes {
     font-size: 18px;
 }
+
+.like-btn {
+    background-color: #ffeaa7;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.like-btn:hover {
+    background-color: #fdcb6e;
+}
