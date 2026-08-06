@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+    # DB에서 모든 의견을 최신순으로 가져와 메인 화면에 표시
     conn = get_db_connection()
     opinions = conn.execute(
         "SELECT * FROM opinions ORDER BY created_at DESC"
