@@ -46,3 +46,33 @@
     font-size: 15px;
     cursor: pointer;
 }
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #4834d4;
+    text-decoration: none;
+}
+
+.detail-card {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.detail-card .content {
+    line-height: 1.6;
+    white-space: pre-wrap;
+    margin: 16px 0;
+}
+
+.detail-card .likes {
+    font-size: 18px;
+}
+
