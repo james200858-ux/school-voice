@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    # 검색어가 있으면 제목에 포함된 것만, 없으면 전체 조회
     keyword = request.args.get("keyword", "")
 
     conn = get_db_connection()
@@ -66,6 +65,21 @@ def like(opinion_id):
     ).fetchone()
     conn.close()
     return jsonify({"likes": updated["likes"]})
+
+
+@app.route("/stats")
+def stats():
+    # 카테고리별로 게시글 수를 세어서 통계 페이지에 전달
+    conn = get_db_connection()
+    rows = conn.execute(
+        "SELECT category, COUNT(*) as count FROM opinions GROUP BY category"
+    ).fetchall()
+    conn.close()
+
+    categories = [row["category"] for row in rows]
+    counts = [row["count"] for row in rows]
+
+    return render_template("stats.html", categories=categories, counts=counts)
 
 
 if __name__ == "__main__":
