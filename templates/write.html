@@ -1,1 +1,23 @@
+{% extends "base.html" %}
 
+{% block content %}
+    <h1>의견 등록하기</h1>
+
+    <form method="POST" class="opinion-form">
+        <label for="title">제목</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="category">카테고리</label>
+        <select id="category" name="category" required>
+            <option value="시설">시설</option>
+            <option value="급식">급식</option>
+            <option value="학사">학사</option>
+            <option value="기타">기타</option>
+        </select>
+
+        <label for="content">내용</label>
+        <textarea id="content" name="content" rows="6" required></textarea>
+
+        <button type="submit">등록하기</button>
+    </form>
+{% endblock %}
