@@ -42,6 +42,29 @@ body {
     font-size: 14px;
 }
 
+.search-form {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #dfe6e9;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.search-form button {
+    background-color: #636e72;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .card-list {
     display: flex;
     flex-direction: column;
@@ -138,4 +161,9 @@ body {
 
 .like-btn:hover {
     background-color: #fdcb6e;
+}
+
+.like-btn:disabled {
+    background-color: #dfe6e9;
+    cursor: not-allowed;
 }
