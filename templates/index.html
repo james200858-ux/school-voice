@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>학생 의견 목록</h1>
+    <div class="page-header">
+        <h1>학생 의견 목록</h1>
+        <a href="{{ url_for('write') }}" class="btn">+ 의견 등록</a>
+    </div>
 
     {% if opinions|length == 0 %}
         <p class="empty">아직 등록된 의견이 없어요.</p>
