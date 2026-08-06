@@ -7,6 +7,11 @@
         <span class="category">{{ opinion['category'] }}</span>
         <h1>{{ opinion['title'] }}</h1>
         <p class="content">{{ opinion['content'] }}</p>
-        <p class="likes">👍 {{ opinion['likes'] }}</p>
+
+        <button id="like-btn" class="like-btn" data-id="{{ opinion['id'] }}">
+            👍 <span id="like-count">{{ opinion['likes'] }}</span>
+        </button>
     </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 {% endblock %}
