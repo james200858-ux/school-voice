@@ -9,8 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
             fetch(`/like/${opinionId}`, { method: "POST" })
                 .then((response) => response.json())
                 .then((data) => {
-                    // 서버가 응답한 새 좋아요 수로 화면 갱신
                     document.getElementById("like-count").textContent = data.likes;
+                    // 중복 클릭 방지: 누르고 나면 버튼 비활성화
+                    likeBtn.disabled = true;
+                    likeBtn.textContent = "👍 공감 완료";
                 });
         });
     }
