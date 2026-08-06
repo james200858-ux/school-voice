@@ -6,12 +6,22 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+    # 검색어가 있으면 제목에 포함된 것만, 없으면 전체 조회
+    keyword = request.args.get("keyword", "")
+
     conn = get_db_connection()
-    opinions = conn.execute(
-        "SELECT * FROM opinions ORDER BY created_at DESC"
-    ).fetchall()
+    if keyword:
+        opinions = conn.execute(
+            "SELECT * FROM opinions WHERE title LIKE ? ORDER BY created_at DESC",
+            (f"%{keyword}%",)
+        ).fetchall()
+    else:
+        opinions = conn.execute(
+            "SELECT * FROM opinions ORDER BY created_at DESC"
+        ).fetchall()
     conn.close()
-    return render_template("index.html", opinions=opinions)
+
+    return render_template("index.html", opinions=opinions, keyword=keyword)
 
 
 @app.route("/write", methods=["GET", "POST"])
@@ -46,7 +56,6 @@ def detail(opinion_id):
 
 @app.route("/like/<int:opinion_id>", methods=["POST"])
 def like(opinion_id):
-    # 공감 수를 1 증가시키고, 변경된 숫자를 JSON으로 응답
     conn = get_db_connection()
     conn.execute(
         "UPDATE opinions SET likes = likes + 1 WHERE id = ?", (opinion_id,)
