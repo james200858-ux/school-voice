@@ -1,1 +1,12 @@
+{% extends "base.html" %}
 
+{% block content %}
+    <a href="{{ url_for('index') }}" class="back-link">← 목록으로</a>
+
+    <div class="detail-card">
+        <span class="category">{{ opinion['category'] }}</span>
+        <h1>{{ opinion['title'] }}</h1>
+        <p class="content">{{ opinion['content'] }}</p>
+        <p class="likes">👍 {{ opinion['likes'] }}</p>
+    </div>
+{% endblock %}
