@@ -1,3 +1,32 @@
+body {
+    font-family: sans-serif;
+    background-color: #f5f6fa;
+    margin: 0;
+    color: #2f3640;
+}
+
+.navbar {
+    background-color: #4834d4;
+    padding: 16px;
+}
+
+.logo {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.empty {
+    color: #7f8c8d;
+}
+
 .page-header {
     display: flex;
     justify-content: space-between;
@@ -11,6 +40,32 @@
     padding: 8px 16px;
     border-radius: 6px;
     font-size: 14px;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.category {
+    background-color: #dfe6e9;
+    color: #2d3436;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
 }
 
 .opinion-form {
@@ -47,11 +102,6 @@
     cursor: pointer;
 }
 
-.card-link {
-    text-decoration: none;
-    color: inherit;
-}
-
 .back-link {
     display: inline-block;
     margin-bottom: 12px;
@@ -75,4 +125,3 @@
 .detail-card .likes {
     font-size: 18px;
 }
-
