@@ -1,1 +1,19 @@
+{% extends "base.html" %}
 
+{% block content %}
+    <h1>학생 의견 목록</h1>
+
+    {% if opinions|length == 0 %}
+        <p class="empty">아직 등록된 의견이 없어요.</p>
+    {% else %}
+        <div class="card-list">
+            {% for op in opinions %}
+                <div class="card">
+                    <span class="category">{{ op['category'] }}</span>
+                    <h3>{{ op['title'] }}</h3>
+                    <p>👍 {{ op['likes'] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
