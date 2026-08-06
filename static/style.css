@@ -1,49 +1,48 @@
-body {
-    font-family: sans-serif;
-    background-color: #f5f6fa;
-    margin: 0;
-    color: #2f3640;
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.navbar {
+.btn {
     background-color: #4834d4;
-    padding: 16px;
-}
-
-.logo {
     color: white;
-    font-size: 20px;
-    font-weight: bold;
     text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.empty {
-    color: #7f8c8d;
-}
-
-.card-list {
+.opinion-form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-}
-
-.card {
+    gap: 8px;
     background: white;
+    padding: 20px;
     border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.category {
-    background-color: #dfe6e9;
-    color: #2d3436;
-    font-size: 12px;
-    padding: 2px 8px;
-    border-radius: 12px;
+.opinion-form label {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.opinion-form input,
+.opinion-form select,
+.opinion-form textarea {
+    padding: 8px;
+    border: 1px solid #dfe6e9;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.opinion-form button {
+    margin-top: 12px;
+    background-color: #4834d4;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
 }
