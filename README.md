@@ -44,3 +44,58 @@ React, Next.js 등 무거운 프레임워크 없이,
 
 ## 📁 프로젝트 구조
 
+school-voice/
+├── app.py                 # Flask 메인 서버 (라우팅)
+├── database.py             # DB 연결 및 초기화 함수
+├── schema.sql               # 테이블 생성 SQL
+├── requirements.txt
+├── README.md
+├── templates/
+│   ├── base.html             # 공통 레이아웃
+│   ├── index.html             # 메인 - 의견 목록 & 검색
+│   ├── write.html             # 의견 등록 폼
+│   ├── detail.html             # 의견 상세 보기 & 공감
+│   └── stats.html             # 카테고리별 통계
+└── static/
+    ├── style.css
+    └── script.js            # 공감 버튼 처리
+
+---
+
+## 🚀 실행 방법
+
+1. 저장소 클론
+```
+git clone https://github.com/james200858-ux/school-voice.git
+cd school-voice
+```
+
+2. 필요한 패키지 설치
+```
+pip install -r requirements.txt
+```
+
+3. 서버 실행
+```
+python app.py
+```
+
+실행 후 브라우저에서 `http://localhost:5000` 접속
+
+---
+
+## 🔭 향후 개발 계획
+
+현재는 MVP 범위에 맞춰 아래 기능들은 구현하지 않았습니다. 추후 다음과 같은 방향으로 확장할 수 있습니다.
+
+- 회원가입 / 로그인 기능 도입 → 사용자별 중복 공감 완전 방지
+- 관리자 페이지를 통한 의견 관리 및 처리 상태 표시
+- 댓글 기능을 통한 학생 간 소통 강화
+- 카테고리 필터링 및 정렬 기능(인기순, 오래된순 등) 추가
+- 반응형 UI 고도화 및 다크 모드 지원
+
+---
+
+## 👤 만든 사람
+
+고등학생 팀 프로젝트로 제작된 프로토타입입니다.
