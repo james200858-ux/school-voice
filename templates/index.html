@@ -6,8 +6,19 @@
         <a href="{{ url_for('write') }}" class="btn">+ 의견 등록</a>
     </div>
 
+    <form method="GET" action="{{ url_for('index') }}" class="search-form">
+        <input type="text" name="keyword" placeholder="제목으로 검색" value="{{ keyword }}">
+        <button type="submit">검색</button>
+    </form>
+
     {% if opinions|length == 0 %}
-        <p class="empty">아직 등록된 의견이 없어요.</p>
+        <p class="empty">
+            {% if keyword %}
+                "{{ keyword }}"에 대한 검색 결과가 없어요.
+            {% else %}
+                아직 등록된 의견이 없어요.
+            {% endif %}
+        </p>
     {% else %}
         <div class="card-list">
             {% for op in opinions %}
