@@ -1,1 +1,39 @@
+{% extends "base.html" %}
 
+{% block content %}
+    <h1>카테고리별 통계</h1>
+
+    {% if categories|length == 0 %}
+        <p class="empty">통계를 표시할 데이터가 없어요.</p>
+    {% else %}
+        <div class="chart-box">
+            <canvas id="statsChart"></canvas>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+        <script>
+            const categories = {{ categories | tojson }};
+            const counts = {{ counts | tojson }};
+
+            new Chart(document.getElementById("statsChart"), {
+                type: "bar",
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        label: "게시글 수",
+                        data: counts,
+                        backgroundColor: "#4834d4"
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { stepSize: 1 }
+                        }
+                    }
+                }
+            });
+        </script>
+    {% endif %}
+{% endblock %}
